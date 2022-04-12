@@ -99,6 +99,10 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             successor.lineRenderer.SetPosition(0, Vector3.zero);
             successor.lineRenderer.SetPosition(1, Vector3.zero);
         }
+        else if(successor == this)
+        {
+            _manager.successCount--;
+        }
         _isDragStarted = true;
         _manager.CurrentDraggedWire = this;
     }
