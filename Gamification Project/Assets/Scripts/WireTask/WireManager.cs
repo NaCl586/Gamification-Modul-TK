@@ -81,6 +81,30 @@ public class WireManager : MonoBehaviour
         winWindow.transform.DOScale(Vector3.one, 0.5f);
 
     }
+    
+    //observer pattern - Listener
+    public void OnEnable()
+    {
+        Wire.increaseSuccessCount += increaseSuccessCount;
+        Wire.decreaseSuccessCount += decreaseSuccessCount;
+    }
+
+    public void OnDisable()
+    {
+        Wire.increaseSuccessCount -= increaseSuccessCount;
+        Wire.decreaseSuccessCount -= decreaseSuccessCount;
+    }
+
+    public void increaseSuccessCount()
+    {
+        successCount++;
+        if (successCount == 5) Win();
+    }
+
+    public void decreaseSuccessCount()
+    {
+        successCount--;
+    }
 
     public void RestartLevel()
     {

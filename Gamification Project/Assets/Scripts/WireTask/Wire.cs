@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    //Observer Pattern - Subject
+    public delegate void updateSucessCount();
+    public static updateSucessCount increaseSuccessCount;
+    public static updateSucessCount decreaseSuccessCount;
+
     [HideInInspector] public Wire successor;
 
     [HideInInspector] public int wireColor;
@@ -76,9 +81,7 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                 successor = _manager.CurrentDraggedWire;
                 _manager.CurrentHoveredWire.successor = _manager.CurrentDraggedWire;
 
-                _manager.successCount++;
-                if(_manager.successCount == 5)
-                    _manager.Win();
+                increaseSuccessCount?.Invoke();
             }
             else
             {
@@ -95,13 +98,13 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     {
         if (successor != null && successor != this)
         {
-            _manager.successCount--;
+            decreaseSuccessCount?.Invoke();
             successor.lineRenderer.SetPosition(0, Vector3.zero);
             successor.lineRenderer.SetPosition(1, Vector3.zero);
         }
         else if(successor == this)
         {
-            _manager.successCount--;
+            decreaseSuccessCount?.Invoke();
         }
         _isDragStarted = true;
         _manager.CurrentDraggedWire = this;
