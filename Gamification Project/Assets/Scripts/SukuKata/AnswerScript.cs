@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class AnswerScript : MonoBehaviour
 {
+    private AudioManager am;
+
+    //Observer Pattern - Subject
+    public delegate void updateCorrectAnswers();
+    public static updateCorrectAnswers increaseCorrectAnswers;
+
+    public void Awake()
+    {
+        am = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioManager>();
+    }
+
     public bool isCorrect = false;
     public QuizManager quizManager;
     public void Answer()
@@ -11,13 +22,15 @@ public class AnswerScript : MonoBehaviour
         if(isCorrect)
         {
             Debug.Log("Correct Answer");
-            quizManager.correct();
+            am.puCorrect();
+            increaseCorrectAnswers?.Invoke();
 
         }
         else
         {
             Debug.Log("Wrong Answer");
-            quizManager.correct();
+            am.puWrong();
+            quizManager.answerQuestion(false);
         }
     }    
 }

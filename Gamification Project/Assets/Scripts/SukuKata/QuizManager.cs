@@ -3,26 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class QuizManager : MonoBehaviour
 {
-    public List<QuestionsAndAnswers> QnA;
-    public GameObject[] options;
-    public int currentQuestion;
 
-    public GameObject Quizpanel;
-    public GameObject GoPanel;
+    [Header("Questions")]
+    public List<QuestionsAndAnswers> QnA;
+
+    [Header("References")]
+    public GameObject[] options;
+    private int currentQuestion;
+    private int lastQuestion = -1;
+
+    public Image image;
 
     public Text QuestionTxt;
-    public Text ScoreTxt;
+    public Text CurrentScoreText;
 
-    int TotalQuestions = 0;
+    private int TotalQuestions = 0;
     public int score;
+
+    [Header("UI References")]
+    public GameObject win;
+    public GameObject winWindow;
+    public RawImage winBackground;
+
+    private List<int> correctAnswerIndex = new List<int>();
 
     private void Start()
     {
-        TotalQuestions = QnA.Count;
-        GoPanel.SetActive(false);
+        TotalQuestions = 5;
         generateQuestion();
     }
 
@@ -31,51 +42,99 @@ public class QuizManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    void GameOver()
+    public void Win()
     {
-        Quizpanel.SetActive(false);
-        GoPanel.SetActive(true);
-        ScoreTxt.text= score + "/" + TotalQuestions;    
+        win.SetActive(true);
+
+        winBackground.color = Color.clear;
+        winBackground.DOColor(new Color(0, 0, 0, 0.5f), 0.5f);
+
+        winWindow.transform.localScale = Vector3.zero;
+        winWindow.transform.DOScale(Vector3.one, 0.5f);
+
     }
 
-    public void correct()
+    public void answerQuestion(bool correct)
     {
-        score++;
-        QnA.RemoveAt(currentQuestion);
+        if (correct)
+        {
+            score++;
+            correctAnswerIndex.Add(currentQuestion);
+        }
         generateQuestion();
     }
 
-    public void wrong()
+    public List<int> randomizedList(int start, int finish, int take)
     {
-        QnA.RemoveAt(currentQuestion);
-        generateQuestion();
+        List<int> orderedSequence = new List<int>();
+        for (int i = start; i <= finish; i++) orderedSequence.Add(i);
+        
+        List<int> finalSequence = new List<int>();
+        for (int i = 0; i < take; i++)
+        {
+            int rng = Random.Range(0, orderedSequence.Count);
+            finalSequence.Add(orderedSequence[rng]);
+            orderedSequence.RemoveAt(rng);
+        }
+
+        return finalSequence;
     }
+
     void SetAnswers()
     {
-        for(int i=0; i<options.Length; i++)
+        List<int> answerPos = randomizedList(1, 4, 2);
+        answerPos.Add(0);
+        answerPos.Reverse();
+
+        List<int> sequencePos = randomizedList(0, 2, 3);
+
+
+        for(int i = 0; i < 3; i++)
         {
-            options[i].GetComponent<AnswerScript>().isCorrect = false;
-            options[i].transform.GetChild(0).GetComponent<Text>().text = QnA[currentQuestion].Answers[i];
+            options[sequencePos[i]].GetComponent<AnswerScript>().isCorrect = false;
+            options[sequencePos[i]].transform.GetChild(0).GetComponent<Text>().text = QnA[currentQuestion].Answers[answerPos[i]];
              
-            if(QnA[currentQuestion].CorrectAnswer == i+1)
-            {
-            options[i].GetComponent<AnswerScript>().isCorrect = true;
-            }
+            if(answerPos[i] == 0)
+                options[sequencePos[i]].GetComponent<AnswerScript>().isCorrect = true;
         }
     }
     void generateQuestion()
     {
-        if(QnA.Count > 0 )
-        {
-              currentQuestion = Random.Range(0, QnA.Count);
 
-        QuestionTxt.text = QnA[currentQuestion].Questions;
-        SetAnswers();
-        }
-        else 
+        CurrentScoreText.text = score + "/" + TotalQuestions;
+
+        if (score < TotalQuestions)
         {
-            Debug.Log("Out of Question");
-            GameOver();
+            do
+            {
+                currentQuestion = Random.Range(0, QnA.Count);
+            }
+            while (correctAnswerIndex.Contains(currentQuestion) || lastQuestion == currentQuestion);
+            lastQuestion = currentQuestion;
+
+            image.sprite = QnA[currentQuestion].image;
+            QuestionTxt.text = QnA[currentQuestion].Questions;
+            SetAnswers();
         }
+        else
+        {
+            Win();
+        }
+    }
+
+    public void OnEnable()
+    {
+        AnswerScript.increaseCorrectAnswers += increaseCorrectAnswers;
+    }
+
+    public void OnDisable()
+    {
+        AnswerScript.increaseCorrectAnswers -= increaseCorrectAnswers;
+    }
+
+    public void increaseCorrectAnswers()
+    {
+        answerQuestion(true);
+        if (score == TotalQuestions) Win();
     }
 }

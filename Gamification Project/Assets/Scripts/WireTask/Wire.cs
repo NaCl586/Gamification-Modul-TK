@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    private AudioManager am;
+
     //Observer Pattern - Subject
     public delegate void updateSucessCount();
     public static updateSucessCount increaseSuccessCount;
@@ -26,6 +28,8 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     private void Awake()
     {
+        am = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioManager>();
+
         _image = this.GetComponent<Image>();
         lineRenderer = GetComponent<LineRenderer>();
         _canvas = GetComponentInParent<Canvas>();
@@ -81,10 +85,12 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                 successor = _manager.CurrentDraggedWire;
                 _manager.CurrentHoveredWire.successor = _manager.CurrentDraggedWire;
 
+                am.puCorrect();
                 increaseSuccessCount?.Invoke();
             }
             else
             {
+                am.puWrong();
                 isSuccess = false;
                 _manager.CurrentDraggedWire.isSuccess = false;
             }
