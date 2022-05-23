@@ -116,10 +116,6 @@ public class QuizManager : MonoBehaviour
             QuestionTxt.text = QnA[currentQuestion].Questions;
             SetAnswers();
         }
-        else
-        {
-            Win();
-        }
     }
 
     public void OnEnable()
