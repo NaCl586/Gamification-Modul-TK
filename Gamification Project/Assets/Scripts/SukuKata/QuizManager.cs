@@ -14,9 +14,14 @@ public class QuizManager : MonoBehaviour
     public GameObject GoPanel;
 
     public Text QuestionTxt;
+    public Text ScoreTxt;
+
+    int TotalQuestions = 0;
+    public int score;
 
     private void Start()
     {
+        TotalQuestions = QnA.Count;
         GoPanel.SetActive(false);
         generateQuestion();
     }
@@ -30,14 +35,21 @@ public class QuizManager : MonoBehaviour
     {
         Quizpanel.SetActive(false);
         GoPanel.SetActive(true);
+        ScoreTxt.text= score + "/" + TotalQuestions;    
     }
 
     public void correct()
     {
+        score++;
         QnA.RemoveAt(currentQuestion);
         generateQuestion();
     }
 
+    public void wrong()
+    {
+        QnA.RemoveAt(currentQuestion);
+        generateQuestion();
+    }
     void SetAnswers()
     {
         for(int i=0; i<options.Length; i++)
