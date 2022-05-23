@@ -1,34 +1,12 @@
 {
   "dependencies": {
     "com.unity.2d.animation": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "version": "7.0.3",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.2d.common": "6.0.2",
-=======
       "version": "4.2.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-=======
-      "version": "4.2.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "4.2.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
->>>>>>> parent of a03d003 (Suku Kata WIP)
         "com.unity.2d.common": "3.0.1",
         "com.unity.mathematics": "1.1.0",
->>>>>>> parent of a03d003 (Suku Kata WIP)
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.modules.animation": "1.0.0",
         "com.unity.modules.uielements": "1.0.0"
@@ -36,98 +14,36 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.common": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "version": "6.0.2",
-=======
       "version": "3.0.1",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "3.0.1",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "3.0.1",
->>>>>>> parent of a03d003 (Suku Kata WIP)
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.2d.sprite": "1.0.0",
-        "com.unity.mathematics": "1.1.0",
-        "com.unity.modules.uielements": "1.0.0",
-        "com.unity.burst": "1.5.1"
+        "com.unity.modules.uielements": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.path": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "version": "5.0.1",
-=======
       "version": "3.0.2",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "3.0.2",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "3.0.2",
->>>>>>> parent of a03d003 (Suku Kata WIP)
       "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.pixel-perfect": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "version": "5.0.1",
-=======
       "version": "3.0.2",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "3.0.2",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "3.0.2",
->>>>>>> parent of a03d003 (Suku Kata WIP)
       "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.psdimporter": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "version": "6.0.2",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.2d.animation": "7.0.3",
-        "com.unity.2d.common": "6.0.2",
-=======
-=======
->>>>>>> parent of a03d003 (Suku Kata WIP)
       "version": "3.1.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.2d.common": "3.0.1",
         "com.unity.2d.animation": "4.2.5",
-<<<<<<< HEAD
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "3.1.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.2d.common": "3.0.1",
-        "com.unity.2d.animation": "4.2.5",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
->>>>>>> parent of a03d003 (Suku Kata WIP)
         "com.unity.2d.sprite": "1.0.0"
       },
       "url": "https://packages.unity.com"
@@ -139,40 +55,13 @@
       "dependencies": {}
     },
     "com.unity.2d.spriteshape": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "version": "7.0.3",
-=======
       "version": "4.1.3",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "4.1.3",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "4.1.3",
->>>>>>> parent of a03d003 (Suku Kata WIP)
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.1.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "com.unity.2d.common": "6.0.1",
-        "com.unity.2d.path": "5.0.1",
-=======
         "com.unity.2d.common": "3.0.1",
         "com.unity.2d.path": "3.0.2",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-        "com.unity.2d.common": "3.0.1",
-        "com.unity.2d.path": "3.0.2",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-        "com.unity.2d.common": "3.0.1",
-        "com.unity.2d.path": "3.0.2",
->>>>>>> parent of a03d003 (Suku Kata WIP)
         "com.unity.modules.physics2d": "1.0.0"
       },
       "url": "https://packages.unity.com"
@@ -183,34 +72,10 @@
       "source": "builtin",
       "dependencies": {}
     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "com.unity.burst": {
-      "version": "1.6.4",
-      "depth": 2,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.mathematics": "1.2.1"
-      },
-=======
     "com.unity.collab-proxy": {
       "version": "1.3.9",
       "depth": 0,
       "source": "registry",
-      "dependencies": {},
->>>>>>> parent of a03d003 (Suku Kata WIP)
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.collab-proxy": {
-      "version": "1.3.9",
-      "depth": 0,
-      "source": "registry",
-=======
-    "com.unity.collab-proxy": {
-      "version": "1.3.9",
-      "depth": 0,
-      "source": "registry",
->>>>>>> parent of a03d003 (Suku Kata WIP)
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
@@ -222,23 +87,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.ide.rider": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "version": "3.0.9",
-=======
       "version": "1.2.1",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "1.2.1",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "1.2.1",
->>>>>>> parent of a03d003 (Suku Kata WIP)
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.ext.nunit": "1.0.6"
+        "com.unity.test-framework": "1.1.1"
       },
       "url": "https://packages.unity.com"
     },
@@ -257,11 +110,32 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.mathematics": {
-<<<<<<< HEAD
-      "version": "1.2.5",
-=======
       "version": "1.1.0",
->>>>>>> parent of a03d003 (Suku Kata WIP)
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.probuilder": {
+      "version": "4.4.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.settings-manager": "1.0.3"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.progrids": {
+      "version": "3.0.3-preview.6",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.settings-manager": "1.0.2"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.settings-manager": {
+      "version": "1.0.3",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
@@ -288,19 +162,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.timeline": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      "version": "1.6.3",
-=======
       "version": "1.3.5",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "1.3.5",
->>>>>>> parent of a03d003 (Suku Kata WIP)
-=======
-      "version": "1.3.5",
->>>>>>> parent of a03d003 (Suku Kata WIP)
       "depth": 0,
       "source": "registry",
       "dependencies": {},

@@ -23,12 +23,12 @@ public class QuizManager : MonoBehaviour
 
     public void retry()
     {
-        SceneManagement.LoadScene(SceneManagement.GetActiveScene().buildindex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void GameOver()
     {
-        Quispanel.SetActive(false);
+        Quizpanel.SetActive(false);
         GoPanel.SetActive(true);
     }
 
