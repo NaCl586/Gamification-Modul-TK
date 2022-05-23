@@ -25,13 +25,13 @@ public class QuizManager : MonoBehaviour
     {
         for(int i=0; i<options.Length; i++)
         {
-            options[i].GetComponent<AnswerScript>().isCorrect = false
+            options[i].GetComponent<AnswerScript>().isCorrect = false;
             options[i].transform.GetChild(0).GetComponent<Text>().text = QnA[currentQuestion].Answers[i];
-        }
-
-        if(QnA[currentQuestion].CorrectAnswer == i+1)
-        {
+             
+            if(QnA[currentQuestion].CorrectAnswer == i+1)
+            {
             options[i].GetComponent<AnswerScript>().isCorrect = true;
+            }
         }
     }
     void generateQuestion()
