@@ -1627,8 +1627,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: QuizManager, Assembly-CSharp
+      - m_Target: {fileID: 1790993199}
+        m_TargetAssemblyTypeName: SeragamManager, Assembly-CSharp
         m_MethodName: retry
         m_Mode: 1
         m_Arguments:

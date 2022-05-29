@@ -48,9 +48,9 @@ public class SeragamManager : MonoBehaviour
     {
         gambarAnak.sprite = (anakCowo == 0) ? tara : kanaya;
         setTextGuru();
-        for(int i=0; i < buttons.Length; i++)
+        for(int i = 0; i < buttons.Length; i++)
         {
-            buttonImage[sequence[i]].sprite = anakCowo == 0 ? seragamCowo[sequence[i]] : seragamCewe[sequence[i]];
+            buttonImage[sequence[i]].sprite = anakCowo == 0 ? seragamCowo[i] : seragamCewe[i];
         }
     }
 
@@ -105,6 +105,11 @@ public class SeragamManager : MonoBehaviour
         winWindow.transform.localScale = Vector3.zero;
         winWindow.transform.DOScale(Vector3.one, 0.5f);
 
+    }
+
+    public void retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void setTextGuru()
