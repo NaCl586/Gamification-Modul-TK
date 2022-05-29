@@ -64,29 +64,13 @@ public class QuizManager : MonoBehaviour
         generateQuestion();
     }
 
-    public List<int> randomizedList(int start, int finish, int take)
-    {
-        List<int> orderedSequence = new List<int>();
-        for (int i = start; i <= finish; i++) orderedSequence.Add(i);
-        
-        List<int> finalSequence = new List<int>();
-        for (int i = 0; i < take; i++)
-        {
-            int rng = Random.Range(0, orderedSequence.Count);
-            finalSequence.Add(orderedSequence[rng]);
-            orderedSequence.RemoveAt(rng);
-        }
-
-        return finalSequence;
-    }
-
     void SetAnswers()
     {
-        List<int> answerPos = randomizedList(1, 4, 2);
+        List<int> answerPos = Utils.randomizedList(1, 4, 2);
         answerPos.Add(0);
         answerPos.Reverse();
 
-        List<int> sequencePos = randomizedList(0, 2, 3);
+        List<int> sequencePos = Utils.randomizedList(0, 2, 3);
 
 
         for(int i = 0; i < 3; i++)
