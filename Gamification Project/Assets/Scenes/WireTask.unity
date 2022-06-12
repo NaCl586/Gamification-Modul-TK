@@ -2361,7 +2361,7 @@ GameObject:
   - component: {fileID: 1081453425}
   - component: {fileID: 1081453424}
   m_Layer: 5
-  m_Name: GameWindow (1)
+  m_Name: GameWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
