@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class ProfesiManager : MonoBehaviour
 {
@@ -23,8 +25,9 @@ public class ProfesiManager : MonoBehaviour
 
     [Header("Game text")]
     public Text text;
+    public Text correctCount;
 
-    [Header("Image gameobject")]
+    [Header("Image Gameobject")]
     public GameObject Image1;
     public GameObject Image2;
     public GameObject Image3;
@@ -39,20 +42,20 @@ public class ProfesiManager : MonoBehaviour
     private Image image5Image;
     private Image image6Image;
 
-    private Profesi image1Profesi; 
+    private Profesi image1Profesi;
     private Profesi image2Profesi;
     private Profesi image3Profesi;
     private Profesi image4Profesi;
     private Profesi image5Profesi;
     private Profesi image6Profesi;
 
-    [Header("I am gay")]
-    public Sprite polisi1;  
+    [Header("Sprite References")]
+    public Sprite polisi1;
     public Sprite polisi2;
     public Sprite polisi3;
 
     public Sprite artist1;
-    public Sprite artist2;    
+    public Sprite artist2;
     public Sprite artist3;
 
     public Sprite koki1;
@@ -71,11 +74,41 @@ public class ProfesiManager : MonoBehaviour
     public Sprite penata2;
     public Sprite penata3;
 
+    [Header("UI References")]
+    public GameObject win;
+    public GameObject winWindow;
+    public RawImage winBackground;
 
+    private int correctAnswers = -1;
+
+    void increaseCorrectQuestions()
+    {
+        correctAnswers++;
+        correctCount.text = correctAnswers + "/" + 3;
+        if (correctAnswers == 3) Win();
+    }
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Win()
+    {
+        win.SetActive(true);
+
+        winBackground.color = Color.clear;
+        winBackground.DOColor(new Color(0, 0, 0, 0.5f), 0.5f);
+
+        winWindow.transform.localScale = Vector3.zero;
+        winWindow.transform.DOScale(Vector3.one, 0.5f);
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        correctAnswers = -1;
+
         boxes = new List<int>();
         for(int i = 0; i < 6; ++i) {
             boxes.Add(i+1);
@@ -99,7 +132,7 @@ public class ProfesiManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void CheckAnswer()
     {
         //variable ini berfungsi untuk menghitung banyak jawaban yang benar
         //appabila jawaban 3, reset
@@ -120,22 +153,29 @@ public class ProfesiManager : MonoBehaviour
             correctCounter++;
         }
         if(image6Profesi.IsAnswer && image6Profesi.clicked) {
-            correctCounter++;
+            correctCounter++; 
         }
 
-        if(correctCounter == 3) {
+        if (correctCounter == 3) PickProfesi();
+    }
+
+    void PickProfesi() {
+
+        increaseCorrectQuestions();
+
+        if (correctAnswers >= 3) return;
+
+        if(correctAnswers != 0)
+        {
             image1Profesi.Reset();
             image2Profesi.Reset();
             image3Profesi.Reset();
             image4Profesi.Reset();
             image5Profesi.Reset();
             image6Profesi.Reset();
-            PickProfesi();
         }
-    }
 
-    void PickProfesi() {
-        
+
         int chooser = Random.Range(0, boxes.Count);
         int chosen = boxes[chooser];
         boxes.RemoveAt(chooser);

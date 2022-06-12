@@ -22,31 +22,38 @@ public class Profesi : MonoBehaviour
     private GameObject checkmark;
     private GameObject cross;
 
+    private AudioManager am;
+    private ProfesiManager pm;
+
+
+    public void Awake()
+    {
+        am = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<AudioManager>();
+        pm = GameObject.Find("SoalManager").GetComponent<ProfesiManager>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        checkmark = transform.Find("checkmark").gameObject;
-        cross = transform.Find("cross").gameObject;
+        checkmark = transform.GetChild(0).gameObject;
+        cross = transform.GetChild(1).gameObject;
 
         clicked = false;
 
         Reset();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnProfesiClick() {
         if(IsAnswer) {
             checkmark.SetActive(true);
+            am.puCorrect();
         } else {
             cross.SetActive(true);
+            am.puWrong();
         }
 
         clicked = true;
+        pm.CheckAnswer();
     }
 
     public void Reset() {
