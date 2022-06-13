@@ -105,11 +105,12 @@ public class SeragamManager : MonoBehaviour
         winWindow.transform.localScale = Vector3.zero;
         winWindow.transform.DOScale(Vector3.one, 0.5f);
 
+        PlayerPrefs.SetInt("CompleteMinigame2", 1);
     }
 
     public void retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
     }
 
     void setTextGuru()

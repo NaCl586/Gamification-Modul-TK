@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerDownHandler
+public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerUpHandler, IPointerDownHandler
 {
     private Canvas canvas;
     private RectTransform rectTransform;
@@ -47,7 +47,7 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         canvasGroup.blocksRaycasts = true;
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerUp(PointerEventData eventData)
     {
         Debug.Log(Vector2.Distance(rectTransform.anchoredPosition, correctTransform.anchoredPosition));
         if(Vector2.Distance(rectTransform.anchoredPosition, correctTransform.anchoredPosition) < 50f &&
@@ -59,5 +59,10 @@ public class PuzzlePiece : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             am.puCorrect();
             addScore?.Invoke();
         }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        
     }
 }

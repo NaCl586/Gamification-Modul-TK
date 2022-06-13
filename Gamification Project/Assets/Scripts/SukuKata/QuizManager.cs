@@ -39,7 +39,7 @@ public class QuizManager : MonoBehaviour
 
     public void retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
     }
 
     public void Win()
@@ -52,6 +52,7 @@ public class QuizManager : MonoBehaviour
         winWindow.transform.localScale = Vector3.zero;
         winWindow.transform.DOScale(Vector3.one, 0.5f);
 
+        PlayerPrefs.SetInt("CompleteMinigame3", 1);
     }
 
     public void answerQuestion(bool correct)

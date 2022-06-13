@@ -102,6 +102,8 @@ public class ProfesiManager : MonoBehaviour
         winWindow.transform.localScale = Vector3.zero;
         winWindow.transform.DOScale(Vector3.one, 0.5f);
 
+        PlayerPrefs.SetInt("CompleteMinigame0", 1);
+
     }
 
     // Start is called before the first frame update

@@ -78,6 +78,8 @@ public class PuzzleManager : MonoBehaviour
         winWindow.transform.localScale = Vector3.zero;
         winWindow.transform.DOScale(Vector3.one, 0.5f);
 
+        PlayerPrefs.SetInt("CompleteMinigame1", 1);
+
     }
 
     public void RestartLevel()

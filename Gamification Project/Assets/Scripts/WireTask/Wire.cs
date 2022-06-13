@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     private AudioManager am;
 
@@ -72,7 +72,7 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
             _manager.CurrentHoveredWire = this;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnPointerUp(PointerEventData eventData)
     {
         if(_manager.CurrentHoveredWire != null)
         {
@@ -119,5 +119,10 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     public void OnDrag(PointerEventData eventData)
     {
         //ga dipake
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        
     }
 }
